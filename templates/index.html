@@ -1,0 +1,13 @@
+<!--Incrustrar Layout-->
+{% extends "layout.html" %}
+{% block contenido%}
+
+    <h1>Hola Mundo</h1>
+    <h1>{{titulo}}</h1>
+
+    {%for item in listado %}
+        <p>{{item}}</p>
+    {% endfor %}
+
+    {% endblock contenido%}
+ 
