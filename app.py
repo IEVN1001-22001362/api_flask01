@@ -41,9 +41,45 @@ def distancia():
   
     return render_template("distancia.html", resultado=resultado)
 
-@app.route("/figuras",  methods=['GET','POST'] )
+
+
+
+@app.route("/figuras", methods=["GET", "POST"])
 def figuras():
-     return render_template("figuras.html")
+    resultado = None
+
+    if request.method == "POST":
+        figura = request.form.get("figura")
+
+        try:
+            if figura == "cuadrado":
+                lado = float(request.form.get("lado", 0))
+                resultado = lado ** 2
+
+            elif figura == "triangulo":
+                base = float(request.form.get("base", 0))
+                altura = float(request.form.get("altura", 0))
+                resultado = (base * altura) / 2
+
+            elif figura == "circulo":
+                radio = float(request.form.get("radio", 0))
+                resultado = 3.1416 * (radio ** 2)
+
+            elif figura == "rectangulo":
+                base = float(request.form.get("base", 0))
+                altura = float(request.form.get("altura", 0))
+                resultado = base * altura
+
+            elif figura == "pentagono":
+                perimetro = float(request.form.get("perimetro", 0))
+                apotema = float(request.form.get("apotema", 0))
+                resultado = (perimetro * apotema) / 2
+
+        except ValueError:
+            resultado = "Por favor ingresa valores válidos."
+
+    return render_template("figuras.html", resultado=resultado)
+
 
 
 @app.route("/hola")

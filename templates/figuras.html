@@ -1,19 +1,57 @@
 {% extends "layout.html" %}
-{% block contenido%}
+{% block contenido %}
+<h1>Calculadora de áreas</h1>
 
-{% import "_macros.html" as macros %}
-
-<h1>Figuras Geometricas</h1>
 <form action="/figuras" method="post">
-{{macros.campo1('lado', 'Lado del cuadrado')}}
+  <p>Selecciona una figura:</p>
 
-{{macros.campo1('base', 'Base del triangulo', "number")}}
+  <label><input type="radio" name="figura" value="cuadrado" required> Cuadrado</label>
+  <label><input type="radio" name="figura" value="triangulo"> Triángulo</label>
+  <label><input type="radio" name="figura" value="circulo"> Círculo</label>
+  <label><input type="radio" name="figura" value="rectangulo"> Rectángulo</label>
+  <label><input type="radio" name="figura" value="pentagono"> Pentágono</label>
 
-{{macros.campo1('altura','Altura del triangulo')}}
-{{macros.campo1('radio', 'Radio del circulo', )}}
+  <hr>
 
-<button type="submit" class="btn btn-primary"> Calcular </button>
+  <p>Ingresa los valores necesarios según la figura:</p>
 
+  
+  <ul>
+    <li><strong>Cuadrado:</strong> lado</li>
+    <li><strong>Triángulo:</strong> base y altura</li>
+    <li><strong>Círculo:</strong> radio</li>
+    <li><strong>Rectángulo:</strong> base y altura</li>
+    <li><strong>Pentágono:</strong> perímetro y apotema</li>
+  </ul>
+
+  <hr>
+
+
+  <label>Lado:</label>
+  <input type="number" step="any" name="lado">
+
+  <label>Base:</label>
+  <input type="number" step="any" name="base">
+
+  <label>Altura:</label>
+  <input type="number" step="any" name="altura">
+
+  <label>Radio:</label>
+  <input type="number" step="any" name="radio">
+
+  <label>Perímetro:</label>
+  <input type="number" step="any" name="perimetro">
+
+  <label>Apotema:</label>
+  <input type="number" step="any" name="apotema">
+
+  <br><br>
+  <button type="submit" class="btn btn-success">Calcular</button>
 </form>
 
- {% endblock%}
+
+  <hr>
+  <h4>Resultado: {{ resultado }}</h4>
+
+
+{% endblock %}
